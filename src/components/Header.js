@@ -1,95 +1,104 @@
 /** @format */
-
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import Advertisement from "./Advertisement";
 
 const Header = () => {
 	return (
 		<Wrapper>
-			<LogoContainer>
-				<img src='/images/amazon-logo.png' alt='amazon-logo' />
-			</LogoContainer>
+			<HeadContainer>
+				<LogoContainer>
+					<img src='/images/amazon-logo.png' alt='amazon-logo' />
+				</LogoContainer>
 
-			<SearchContainer>
-				<input type='text' />
-				<SearchIcon className='SearchIcon' />
-			</SearchContainer>
+				<SearchContainer>
+					<input type='text' />
+					<SearchIcon className='SearchIcon' />
+				</SearchContainer>
 
-			<NavContainer>
-				<CountryFlagContainer>
-					<img
-						src='https://pngimg.com/uploads/flags/flags_PNG14592.png'
-						alt='usa lag'
-					/>
-					<ArrowDropDownIcon />
-				</CountryFlagContainer>
+				<NavContainer>
+					<CountryFlagContainer>
+						<img
+							src='https://pngimg.com/uploads/flags/flags_PNG14592.png'
+							alt='usa lag'
+						/>
+						<ArrowDropDownIcon />
+					</CountryFlagContainer>
 
-				<NavOption>
-					<span className='firstOption'>Delivery to</span>
-					<div className='secondOption location'>
-						<LocationOnIcon />
-						Location
-					</div>
-				</NavOption>
+					<NavOption>
+						<span className='firstOption'>Delivery to</span>
+						<div className='secondOption location'>
+							<LocationOnIcon />
+							Location
+						</div>
+					</NavOption>
 
-				<NavOption>
-					<span className='firstOption'>Hello, Sign In</span>
-					<span className='secondOption'>Account</span>
-				</NavOption>
-				<NavOption>
-					<span className='firstOption'>Return</span>
-					<span className='secondOption'>& Order</span>
-				</NavOption>
-				<NavOption>
-					<span className='firstOption'>Your</span>
-					<span className='secondOption'>Prime</span>
-				</NavOption>
+					<NavOption>
+						<span className='firstOption'>Hello, Sign In</span>
+						<span className='secondOption'>Account</span>
+					</NavOption>
+					<NavOption>
+						<span className='firstOption'>Return</span>
+						<span className='secondOption'>& Order</span>
+					</NavOption>
+					<NavOption>
+						<span className='firstOption'>Your</span>
+						<span className='secondOption'>Prime</span>
+					</NavOption>
 
-				<BasketOption>
-					<ShoppingBasketIcon />
-					<span className='basketCount'>0</span>
-				</BasketOption>
-			</NavContainer>
+					<BasketOption>
+						<ShoppingBasketIcon />
+						<span className='basketCount'>0</span>
+					</BasketOption>
+				</NavContainer>
 
-			<NavContainerHidden>
-				<NavOption className='FirstHiddenOption'>
-					<span className='firstOption'>Delivery to</span>
-					<div className='secondOption location'>
-						<LocationOnIcon />
-						Location
-					</div>
-				</NavOption>
-				<NavOption>
-					<span className='firstOption'>Hello, Sign In</span>
-					<span className='secondOption'>Account</span>
-				</NavOption>
+				<NavContainerHidden>
+					<NavOption className='FirstHiddenOption'>
+						<span className='firstOption'>Delivery to</span>
+						<div className='secondOption location'>
+							<LocationOnIcon />
+							Location
+						</div>
+					</NavOption>
+					<NavOption>
+						<span className='firstOption'>Hello, Sign In</span>
+						<span className='secondOption'>Account</span>
+					</NavOption>
 
-				<BasketOption>
-					<ShoppingBasketIcon />
-					<span className='basketCount'>0</span>
-				</BasketOption>
-			</NavContainerHidden>
+					<BasketOption>
+						<ShoppingBasketIcon />
+						<span className='basketCount'>0</span>
+					</BasketOption>
+				</NavContainerHidden>
+			</HeadContainer>
+			<Advertisement />
 		</Wrapper>
 	);
 };
 
-export default Header;
+export default memo(Header);
 
 const Wrapper = styled.div`
-	height: 60px;
-	display: flex;
-	align-items: center;
-	background: #131921;
+	width: 100%;
+	height: 110px;
 	position: sticky;
 	top: 0;
 	z-index: 100;
 	color: white;
-	padding: 0 20px;
+	z-index: 100;
+`;
+
+const HeadContainer = styled.div`
+	height: 60px;
+	background: #131921;
 	display: flex;
+	align-items: center;
+	color: white;
+	padding: 0 20px;
 `;
 
 const LogoContainer = styled.div`
@@ -158,6 +167,7 @@ const SearchContainer = styled.div`
 		background: #cd9042;
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
+		transition: 0.4s;
 
 		:focus {
 			border: 1px solid #cd9042;
@@ -175,6 +185,7 @@ const NavContainer = styled.div`
 	align-items: center;
 	justify-content: flex-end;
 	min-width: 500px;
+	cursor: pointer;
 `;
 
 const NavOption = styled.div`
