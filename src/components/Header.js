@@ -6,13 +6,18 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Advertisement from "./Advertisement";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const Header = () => {
+	const history = useHistory();
 	return (
 		<Wrapper>
 			<HeadContainer>
 				<LogoContainer>
-					<img src='/images/amazon-logo.png' alt='amazon-logo' />
+					<Link to='/'>
+						<img src='/images/amazon-logo.png' alt='amazon-logo' />
+					</Link>
 				</LogoContainer>
 
 				<SearchContainer>
@@ -50,8 +55,16 @@ const Header = () => {
 						<span className='secondOption'>Prime</span>
 					</NavOption>
 
-					<BasketOption>
-						<ShoppingBasketIcon />
+					<BasketOption
+						onClick={() => {
+							history.push("/checkout");
+						}}>
+						<ShoppingBasketIcon
+							onClick={() => {
+								history.push("/checkout");
+							}}
+						/>
+
 						<span className='basketCount'>0</span>
 					</BasketOption>
 				</NavContainer>

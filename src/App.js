@@ -4,12 +4,24 @@ import React from "react";
 import Header from "./components/Header";
 import styled from "styled-components";
 import Home from "./components/Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Checkout from "./components/Checkout";
 
 function App() {
 	return (
 		<AppWrapper>
-			<Header />
-			<Home />
+			<Router>
+				<Header />
+				<Switch>
+					<Route path='/' exact>
+						<Home />
+					</Route>
+
+					<Route path='/checkout'>
+						<Checkout />
+					</Route>
+				</Switch>
+			</Router>
 		</AppWrapper>
 	);
 }
