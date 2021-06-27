@@ -1,5 +1,5 @@
 /** @format */
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
@@ -8,8 +8,12 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Advertisement from "./Advertisement";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { selectBasket } from "../features/basket/basketSlice";
 
 const Header = () => {
+	const basket = useSelector(selectBasket);
+
 	const history = useHistory();
 	return (
 		<Wrapper>
@@ -65,7 +69,7 @@ const Header = () => {
 							}}
 						/>
 
-						<span className='basketCount'>0</span>
+						<span className='basketCount'>{basket.length}</span>
 					</BasketOption>
 				</NavContainer>
 
@@ -82,9 +86,17 @@ const Header = () => {
 						<span className='secondOption'>Account</span>
 					</NavOption>
 
-					<BasketOption>
-						<ShoppingBasketIcon />
-						<span className='basketCount'>0</span>
+					<BasketOption
+						onClick={() => {
+							history.push("/checkout");
+						}}>
+						<ShoppingBasketIcon
+							onClick={() => {
+								history.push("/checkout");
+							}}
+						/>
+
+						<span className='basketCount'>{basket.length}</span>
 					</BasketOption>
 				</NavContainerHidden>
 			</HeadContainer>
@@ -119,7 +131,6 @@ const LogoContainer = styled.div`
 	align-items: center;
 	width: 100px;
 	min-width: 100px;
-	/* max-height: 60px; */
 	margin-right: 20px;
 	padding: 5px 10px;
 	height: 45px;
@@ -263,6 +274,7 @@ const BasketOption = styled.div`
 
 	span {
 		margin-left: 10px;
+		font-size: 1.2rem;
 	}
 `;
 

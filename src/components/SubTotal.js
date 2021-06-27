@@ -1,17 +1,31 @@
 /** @format */
 
 import styled from "styled-components";
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import NumberFormat from "react-number-format";
 
+import { useDispatch, useSelector } from "react-redux";
+import { selectBasket } from "../features/basket/basketSlice";
+
 const SubTotal = () => {
+	const basket = useSelector(selectBasket);
+
+	const getTotalPrice = () => {
+		let totalPrice = 0;
+		basket.map((item) => {
+			totalPrice += item.price;
+			console.log(totalPrice);
+		});
+		return totalPrice;
+	};
+
 	return (
 		<CartTotal>
 			<h3>
-				Subtotal({8} items):
+				Subtotal({basket?.length} items):
 				<span className='cartTotal-price'>
 					<NumberFormat
-						value={8}
+						value={getTotalPrice()}
 						displayType={"text"}
 						thousandSeparator={true}
 						prefix={"$"}

@@ -2,22 +2,13 @@
 
 import React, { memo } from "react";
 import styled from "styled-components";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import SubTotal from "./SubTotal";
+import Banner from "./Banner";
 
 const Checkout = () => {
 	return (
 		<Wrapper>
-			<BannerContainer>
-				<LazyLoadImage
-					effect='blur'
-					placeholderSrc='"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_2x._CB432458382_.jpg'
-					src='/images/banner2.jpg'
-					alt='amazon banner'
-					className='homeImage'
-				/>
-			</BannerContainer>
+			<Banner />
 
 			<TotalCeckOutContainer>
 				<CheckOutLeft>
@@ -38,33 +29,6 @@ const Wrapper = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-`;
-
-const BannerContainer = styled.div`
-	z-index: -3 !important;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-right: auto;
-	margin-left: auto;
-	max-width: 1500px;
-	margin-top: -10px;
-	margin-bottom: -25% !important;
-
-	img.homeImage {
-		width: 100%;
-		max-width: 100%;
-		max-height: 100%;
-		z-index: -3 !important;
-		object-fit: contain;
-		mask-image: linear-gradient(
-			to bottom,
-			rgba(0, 0, 0, 1),
-			rgba(0, 0, 0, 1),
-			rgba(0, 0, 0, 0),
-			rgba(0, 0, 0, 0)
-		);
-	}
 `;
 
 const TotalCeckOutContainer = styled.div`
