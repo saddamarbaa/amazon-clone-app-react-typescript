@@ -1,15 +1,16 @@
 /** @format */
-import React, { memo, useEffect } from "react";
+
+import React, { memo } from "react";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Advertisement from "./Advertisement";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectBasket } from "../features/basket/basketSlice";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 const Header = () => {
 	const basket = useSelector(selectBasket);
@@ -20,7 +21,10 @@ const Header = () => {
 			<HeadContainer>
 				<LogoContainer>
 					<Link to='/'>
-						<img src='/images/amazon-logo.png' alt='amazon-logo' />
+						<img
+							src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
+							alt='amazon-logo'
+						/>
 					</Link>
 				</LogoContainer>
 
@@ -47,7 +51,7 @@ const Header = () => {
 					</NavOption>
 
 					<NavOption>
-						<span className='firstOption'>Hello, Sign In</span>
+						<span className='firstOption'>Hello, Saddam </span>
 						<span className='secondOption'>Account</span>
 					</NavOption>
 					<NavOption>
@@ -61,14 +65,15 @@ const Header = () => {
 
 					<BasketOption
 						onClick={() => {
-							history.push("/checkout");
+							history.push("/CheckoutProduct");
 						}}>
-						<ShoppingBasketIcon
+						<ShoppingCartIcon
+							className='ShoppingCartIcon'
 							onClick={() => {
-								history.push("/checkout");
+								history.push("/CheckoutProduct");
 							}}
 						/>
-
+						<p> Basket</p>
 						<span className='basketCount'>{basket.length}</span>
 					</BasketOption>
 				</NavContainer>
@@ -82,20 +87,21 @@ const Header = () => {
 						</div>
 					</NavOption>
 					<NavOption>
-						<span className='firstOption'>Hello, Sign In</span>
+						<span className='firstOption'>Hello, Saddam </span>
 						<span className='secondOption'>Account</span>
 					</NavOption>
 
 					<BasketOption
 						onClick={() => {
-							history.push("/checkout");
+							history.push("/CheckoutProduct");
 						}}>
-						<ShoppingBasketIcon
+						<ShoppingCartIcon
+							className='ShoppingCartIcon'
 							onClick={() => {
-								history.push("/checkout");
+								history.push("/CheckoutProduct");
 							}}
 						/>
-
+						<p> Basket</p>
 						<span className='basketCount'>{basket.length}</span>
 					</BasketOption>
 				</NavContainerHidden>
@@ -123,7 +129,9 @@ const HeadContainer = styled.div`
 	display: flex;
 	align-items: center;
 	color: white;
-	padding: 0 20px;
+
+	margin-right: 10px;
+	padding: 0px 10px;
 `;
 
 const LogoContainer = styled.div`
@@ -132,7 +140,9 @@ const LogoContainer = styled.div`
 	width: 100px;
 	min-width: 100px;
 	margin-right: 20px;
+	margin-left: 15px;
 	padding: 5px 10px;
+	padding-left: 0;
 	height: 45px;
 	transition: 0.4s;
 
@@ -145,6 +155,7 @@ const LogoContainer = styled.div`
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
+		margin-top: 15px;
 	}
 `;
 
@@ -156,7 +167,6 @@ const SearchContainer = styled.div`
 	@media (max-width: 568px) {
 		display: none;
 	}
-
 	display: flex;
 	flex: 1;
 	align-items: center;
@@ -164,7 +174,6 @@ const SearchContainer = styled.div`
 	min-width: 400px;
 	border-radius: 5px;
 	margin-right: 20px;
-
 	input {
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
@@ -177,13 +186,11 @@ const SearchContainer = styled.div`
 		font-size: 17px;
 		color: #111;
 		outline: 0;
-		transition: all 0.1s linear;
-
+		transition: all 0.2s linear;
 		:focus {
-			border: 1px solid #cd9042;
+			border: 2px solid #f0c14b;
 		}
 	}
-
 	.SearchIcon {
 		cursor: pointer;
 		height: 38px;
@@ -192,7 +199,6 @@ const SearchContainer = styled.div`
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
 		transition: 0.4s;
-
 		:focus {
 			border: 1px solid #cd9042;
 		}
@@ -203,7 +209,6 @@ const NavContainer = styled.div`
 	@media (max-width: 1200px) {
 		display: none;
 	}
-
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -216,7 +221,6 @@ const NavOption = styled.div`
 	&:hover {
 		border: 1px solid white;
 	}
-
 	padding: 5px 10px;
 	height: 45px;
 	display: flex;
@@ -225,16 +229,13 @@ const NavOption = styled.div`
 	margin-right: 10px;
 	color: white;
 	transition: 0.4s;
-
 	.firstOption {
 		font-size: 12px;
 	}
-
 	.secondOption {
 		font-size: 14px;
 		font-weight: 800;
 	}
-
 	.secondOption.location {
 		display: flex;
 	}
@@ -247,12 +248,10 @@ const CountryFlagContainer = styled(NavOption)`
 	padding: 5px 10px;
 	height: 45px;
 	transition: 0.4s;
-
 	&:hover {
 		border: 1px solid white;
 		box-shadow: 7px -1px 24px 5px rgba(18, 25, 53, 0.75);
 	}
-
 	img {
 		width: 30px;
 		height: 20px;
@@ -262,10 +261,21 @@ const CountryFlagContainer = styled(NavOption)`
 const BasketOption = styled.div`
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	transition: 0.4s;
 	padding: 5px 10px;
+	padding-right: 0px;
 	height: 45px;
 	transition: 0.4s;
+	position: relative;
+
+	@media (min-width: 568px) {
+		margin-right: 15px;
+	}
+
+	.ShoppingCartIcon {
+		margin-top: 7px;
+	}
 
 	&:hover {
 		border: 1px solid white;
@@ -273,8 +283,28 @@ const BasketOption = styled.div`
 	}
 
 	span {
-		margin-left: 10px;
-		font-size: 1.2rem;
+		position: absolute;
+		top: 0;
+		left: 15px;
+		margin-top: -6px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 1.1rem;
+		width: 1.1rem;
+		font-size: 18px;
+		border-radius: 50%;
+		border: 1px solid #f08804;
+		color: black;
+		background: #f08804;
+	}
+
+	p {
+		margin-right: 10px;
+		margin-top: 12px;
+		font-size: 14px;
+		font-weight: 800;
+		margin-left: 5px;
 	}
 `;
 
@@ -284,22 +314,17 @@ const NavContainerHidden = styled(NavContainer)`
 		@media (max-width: 991px) {
 		}
 	}
-
 	display: none;
-
 	@media (max-width: 1200px) {
 		display: flex;
 		min-width: 100px;
 	}
-
 	@media (max-width: 568px) {
 		flex: 1;
-
 		.FirstHiddenOption {
 			display: none;
 		}
 	}
-
 	@media (max-width: 360px) {
 		justify-content: space-between;
 	}

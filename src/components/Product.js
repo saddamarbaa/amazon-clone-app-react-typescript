@@ -5,65 +5,36 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import axios from "../api/axios";
+import { useDispatch } from "react-redux";
+import { setAddToBasketState } from "../features/basket/basketSlice";
 
-import { useDispatch, useSelector } from "react-redux";
-import {
-	setAddToBasketState,
-	setRemoveFromBasketState,
-	selectBasket,
-} from "../features/basket/basketSlice";
-
-const Product = ({ fetchUrl }) => {
-	// Initialize Product variable with empty array
-	const [product, setProducts] = useState([]);
+const Product = ({ id, title, image, price, category, description, stock }) => {
 	const [starRating, setStarRating] = useState(3);
-
 	const dispatch = useDispatch();
-	const basket = useSelector(selectBasket); // grab the basket from global state
 
-	const addToBasketHandler = (
-		event,
-		id = starRating * 120,
-		title = "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-		image = "https://fakestoreapi.com…PKd-2AYL._AC_SL1500_.jpg",
-		price = 109.95,
-		category = "men's clothing",
-		description = "Your perfect pack for ev…d sleeve, your everyday",
-	) => {
+	const addToBasketHandler = (event) => {
 		event.preventDefault();
 
 		dispatch(
 			setAddToBasketState({
 				item: {
-					id: id,
+					id: uuidv4(),
 					title: title,
 					image: image,
 					rating: starRating,
 					price: price,
 					category: category,
+					description: description,
+					stock: stock,
 				},
 			}),
 		);
 	};
 
-	// function to fetch Product information
-	async function fetchProductData() {
-		try {
-			const request = await axios.get(fetchUrl);
-			setProducts(request.data);
-			return request;
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
 	// call fetchMoviesData()
 	useEffect(() => {
 		setStarRating(Math.floor(Math.random() * 6));
-		fetchProductData();
-		setStarRating(Math.floor(Math.random() * 4));
-	}, [fetchUrl]);
+	}, [id]);
 
 	//  function to truncate(cut) the string if the length of given string
 	//   bigger than  given number(n)
@@ -72,105 +43,96 @@ const Product = ({ fetchUrl }) => {
 	};
 
 	return (
-		<GridContainer>
-			{product?.map(({ id, title, image, price, category, description }) => {
-				return (
-					<ProductRowContainer key={uuidv4()}>
-						<Wrapper>
-							<div className='category__container'>{category}</div>
-							<div className='inner__container'>
-								<div className='image__container'>
-									<LazyLoadImage
-										effect='blur'
-										placeholderSrc='https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg'
-										className='product__image'
-										src={image}
-										alt='demo image'
-										height={190}
-										weight={190}
-										objectFit='contain'
-									/>
-								</div>
-								<ProductInfo>
-									<p className='product__title'>
-										{truncate(title, 55)}
-									</p>
+		<Wrapper>
+			<div className='product_container'>
+				<div className='category__container'>{category}</div>
+				<div className='inner__container'>
+					<div className='image__container'>
+						<LazyLoadImage
+							effect='blur'
+							placeholderSrc='https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg'
+							className='product__image'
+							src={image}
+							alt='demo image'
+							height={190}
+							weight={190}
+							objectFit='contain'
+						/>
+					</div>
+					<ProductInfo>
+						<p className='product__title'>{truncate(title, 55)}</p>
 
-									<p className='product__rating'>
-										{Array(starRating ? starRating : 4)
-											.fill()
-											.map((star) => {
-												return <span key={uuidv4()}>✶</span>;
-											})}
-									</p>
+						<p className='product__rating'>
+							{Array(starRating ? starRating : 4)
+								.fill()
+								.map((star) => {
+									return <span key={uuidv4()}>✶</span>;
+								})}
+						</p>
 
-									<p className='description__container'>
-										{truncate(description, 60)}
-									</p>
+						<p className='description__container'>
+							{truncate(description, 70)}
+						</p>
 
-									<p className='product__price'>
-										<small>$</small>
-										<strong>{price}</strong>
-									</p>
-								</ProductInfo>
+						<p className='product__price'>
+							<small>$</small>
+							<strong>{price}</strong>
+						</p>
+						<p className='product__info-stock'>
+							{stock ? stock : "In Stock - order soon."}
+						</p>
+					</ProductInfo>
 
-								<button
-									onClick={(event) =>
-										addToBasketHandler(
-											event,
-											id,
-											title,
-											image,
-											price,
-											category,
-											description,
-										)
-									}>
-									Add to Basket
-								</button>
-							</div>
-						</Wrapper>
-					</ProductRowContainer>
-				);
-			})}
-		</GridContainer>
+					<button
+						onClick={(event) =>
+							addToBasketHandler(
+								event,
+								id,
+								title,
+								image,
+								price,
+								category,
+								description,
+							)
+						}>
+						Add to Basket
+					</button>
+				</div>
+			</div>
+		</Wrapper>
 	);
 };
 
 export default memo(Product);
 
-const GridContainer = styled.div`
-	width: 100vw;
+const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	box-sizing: border-box;
-`;
-
-const ProductRowContainer = styled.div`
-	width: 340px;
-	margin: 20px;
-	margin-left: 0;
-	margin-bottom: 0;
-
-	@media (max-width: 568px) {
-		width: 85vw;
-		margin-left: 0;
-		margin-right: 0;
-	}
-`;
-
-const Wrapper = styled.div`
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	max-height: 505px;
-	height: 505px;
-	padding: 20px;
-	width: 100%;
+	flex-grow: 1;
 	background-color: white;
+	margin: 10px;
+	max-width: 1500px;
+	overflow: hidden;
+
+	@media (max-width: 300px) {
+		overflow: auto;
+	}
+
+	.product_container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-height: 540px;
+		height: 540px;
+		padding: 20px;
+		max-width: 340px;
+		width: 100%;
+
+		@media (max-width: 380px) {
+			max-height: 570px;
+			height: 570px;
+		}
+	}
 
 	.inner__container {
 		max-width: 300px;
@@ -187,35 +149,39 @@ const Wrapper = styled.div`
 		width: 100%;
 		display: flex;
 		justify-content: flex-end;
-		font-size: 0.87rem;
+		font-size: 0.9rem;
 		margin-top: -10px;
 		margin-bottom: 20px;
 		color: grey;
+		color: #007185;
 
 		@media (max-width: 400px) {
 			padding: 0 10px;
 		}
 
 		:hover {
-			color: #c45500 !important;
+			color: #c7511f !important;
 		}
 	}
 
 	.image__container {
 		display: flex;
 		justify-content: center;
+		height: 190px;
 	}
 
 	img.product__image {
 		display: block;
 		object-fit: contain;
-		height: 150px;
-		object-fit: contain;
+		height: 100%;
+		width: 100%;
 	}
 
 	.description__container {
 		font-size: 0.9rem;
 
+		max-height: 50px;
+		overflow: hidden;
 		@media (max-width: 400px) {
 			padding: 0 10px;
 		}
@@ -238,6 +204,7 @@ const Wrapper = styled.div`
 		cursor: pointer;
 		text-align: center;
 		transition: 0.4s;
+		margin-top: 15px;
 		:hover {
 			background: #f4d078;
 			background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
@@ -255,13 +222,14 @@ const Wrapper = styled.div`
 `;
 
 const ProductInfo = styled.div`
-	min-height: 120px;
-	max-height: 240px;
+	min-height: 130px;
+	max-height: 250px;
 	overflow: hidden;
+	padding-top: 15px;
 
 	@media (max-width: 380px) {
-		min-height: 150px;
-		max-height: 200px;
+		min-height: 190px;
+		max-height: 290px;
 	}
 
 	.product__title {
@@ -285,9 +253,24 @@ const ProductInfo = styled.div`
 	}
 
 	.product__price {
-		margin: 13px 0;
+		margin: 10px 0;
+		margin-bottom: 5px;
 		@media (max-width: 400px) {
 			padding: 0 10px;
+		}
+	}
+
+	.product__info-stock {
+		font-size: 15px;
+		color: #c45500;
+
+		@media (max-width: 400px) {
+			padding: 0 10px;
+		}
+
+		@media (max-width: 300px) {
+			max-height: 20px;
+			overflow: hidden;
 		}
 	}
 

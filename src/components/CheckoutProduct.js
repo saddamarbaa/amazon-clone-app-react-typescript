@@ -4,8 +4,14 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import SubTotal from "./SubTotal";
 import Banner from "./Banner";
+import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
+import { selectBasket } from "../features/basket/basketSlice";
+import { v4 as uuidv4 } from "uuid";
 
-const Checkout = () => {
+const CheckoutProduct = () => {
+	const basket = useSelector(selectBasket);
+
 	return (
 		<Wrapper>
 			<Banner />
@@ -13,6 +19,30 @@ const Checkout = () => {
 			<TotalCeckOutContainer>
 				<CheckOutLeft>
 					<h2 className='checkout__title'>Your Shopping Basket</h2>
+					{basket?.map(
+						({
+							id,
+							title,
+							image,
+							price,
+							category,
+							description,
+							stock,
+						}) => {
+							return (
+								<CartItem
+									key={uuidv4()}
+									id={id}
+									title={title}
+									image={image}
+									price={price}
+									category={category}
+									description={description}
+									stock={stock}
+								/>
+							);
+						},
+					)}
 				</CheckOutLeft>
 
 				<CheckOutRight>
@@ -23,7 +53,7 @@ const Checkout = () => {
 	);
 };
 
-export default memo(Checkout);
+export default memo(CheckoutProduct);
 
 const Wrapper = styled.div`
 	width: 100%;

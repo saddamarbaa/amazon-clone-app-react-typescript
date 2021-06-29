@@ -3,21 +3,27 @@
 import styled from "styled-components";
 import React, { memo, useEffect } from "react";
 import NumberFormat from "react-number-format";
-
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectBasket } from "../features/basket/basketSlice";
+import { useState } from "react";
 
 const SubTotal = () => {
 	const basket = useSelector(selectBasket);
+	const [totalPrice, setTotalPrice] = useState(0);
 
 	const getTotalPrice = () => {
-		let totalPrice = 0;
-		basket.map((item) => {
-			totalPrice += item.price;
-			console.log(totalPrice);
-		});
-		return totalPrice;
+		let initialValue = 0;
+		const totalProductPrice = basket?.reduce(
+			(accumulator, currentItemValue) =>
+				currentItemValue.price + accumulator,
+			initialValue,
+		);
+		return totalProductPrice;
 	};
+
+	useEffect(() => {
+		setTotalPrice(getTotalPrice());
+	}, [basket]);
 
 	return (
 		<CartTotal>
@@ -25,7 +31,7 @@ const SubTotal = () => {
 				Subtotal({basket?.length} items):
 				<span className='cartTotal-price'>
 					<NumberFormat
-						value={getTotalPrice()}
+						value={totalPrice}
 						displayType={"text"}
 						thousandSeparator={true}
 						prefix={"$"}
@@ -34,7 +40,7 @@ const SubTotal = () => {
 				</span>
 			</h3>
 			<p className='subtotal__gift'>
-				<input type='checkbox' checked /> This order contains a gifts
+				<input type='checkbox' /> This order contains a gifts
 			</p>
 			<button>Proceed to checkout</button>
 		</CartTotal>
@@ -66,7 +72,7 @@ const CartTotal = styled.div`
 
 	button {
 		font-size: 1rem;
-		display: block;
+		width: fit-content;
 		cursor: pointer;
 		padding: 7px 15px;
 		border: 1px solid;
@@ -111,7 +117,6 @@ const CartTotal = styled.div`
 		button {
 			margin-left: 0;
 			text-align: center;
-			width: 100%;
 		}
 	}
 `;

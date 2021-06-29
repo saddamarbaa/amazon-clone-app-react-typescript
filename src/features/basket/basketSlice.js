@@ -15,20 +15,15 @@ export const basketSlice = createSlice({
 
 	reducers: {
 		setAddToBasketState: (state, action) => {
-			// (first way)
 			// Create a new copy of state.basket array, with action.payload appended to the end
 			state.basket = state.basket.concat(action.payload.item);
 		},
 
-		setRemoveFromBasketState: (state, action, uuid) => {
+		setRemoveFromBasketState: (state, action, id) => {
 			// Construct a new result array immutably and return it
-			return state.filter((element) => element.uuid !== action.payload);
-
-			// Construct a new array immutably
-			// (second way)
-			// const basket = state.basket.filter(
-			// 	(item) => item.uuid !== action.payload,
-			// );
+			state.basket = state.basket.filter(
+				(item) => item.id !== action.payload.id,
+			);
 		},
 	},
 });

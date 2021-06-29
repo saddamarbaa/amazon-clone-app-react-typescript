@@ -2,18 +2,22 @@
 
 import React, { memo } from "react";
 import styled from "styled-components";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const Advertisement = () => {
 	return (
 		<Wrapper>
 			<div className='first__container'>
-				<span>All Today's Deals</span>
-				<span>Customer Service</span>
-				<span>Registry</span>
-				<span>Sell </span>
+				<div className='menu'>
+					<MenuIcon className='MenuIcon' /> All
+				</div>
+				<div>Today's Deals</div>
+				<div>Customer Service</div>
+				<div>Registry</div>
+				<div>Sell </div>
 			</div>
 			<div className='second__container'>
-				<span>Amazon's response to COVID-19 </span>
+				<div>Amazon's response to COVID-19 </div>
 			</div>
 		</Wrapper>
 	);
@@ -23,9 +27,10 @@ export default memo(Advertisement);
 
 const Wrapper = styled.div`
 	width: 100%;
+	max-width: 1500px;
 	background: #232f3e;
 	color: #fff;
-	height: 40px;
+	height: 41px;
 	display: flex;
 	align-items: center;
 	padding: 3px 20px;
@@ -35,14 +40,23 @@ const Wrapper = styled.div`
 	overflow: hidden;
 
 	@media (max-width: 576px) {
-		justify-content: center;
+		justify-content: flex-end;
 	}
 
-	span {
-		padding: 5px 10px;
+	.first__container,
+	.second__container,
+	.first__container .menu {
+		display: flex;
+		align-items: center;
+	}
+
+	.first__container div,
+	.second__container div,
+	.first__container .menu {
 		transition: 0.4s;
 		cursor: pointer;
-
+		margin-right: 10px;
+		padding: 5px 10px;
 		&:hover {
 			border: 1px solid white;
 			box-shadow: 7px -1px 24px 5px rgba(18, 25, 53, 0.75);
@@ -55,9 +69,10 @@ const Wrapper = styled.div`
 		}
 	}
 
-	.first__container span {
-		margin-right: 20px;
-		display: inline-block;
-		padding: 5px 10px;
+	.first__container .menu {
+		padding-left: 0;
+	}
+	.first__container .menu .MenuIcon {
+		margin-right: 7px;
 	}
 `;

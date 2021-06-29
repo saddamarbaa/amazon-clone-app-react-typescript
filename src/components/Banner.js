@@ -15,13 +15,21 @@ const Banner = () => {
 					showStatus={false}
 					showIndicators={false}
 					showThumbs={false}
-					interval={2000}>
+					interval={4000}>
 					<div>
 						<img src='/images/banner3.jpg' alt='amazon banner' />
 					</div>
 					<div>
 						<img src='/images/banner5.jpg' alt='amazon banner' />
 					</div>
+					<div>
+						<img src='/images/baner7.jpg' alt='amazon banner' />
+					</div>
+
+					<div>
+						<img src='/images/banner8.jpg' alt='amazon banner' />
+					</div>
+
 					<div>
 						<img src='/images/banner4.jpg' alt='amazon banner' />
 					</div>
@@ -32,6 +40,10 @@ const Banner = () => {
 
 					<div>
 						<img src='/images/banner2.jpg' alt='amazon banner' />
+					</div>
+
+					<div>
+						<img src='/images/banner10.jpg' alt='amazon banner' />
 					</div>
 				</Carousel>
 			</BannerContainer>
