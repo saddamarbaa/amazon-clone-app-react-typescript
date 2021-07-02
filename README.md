@@ -56,7 +56,7 @@
 
 ###  Amazon Cart built with React Js + Firebase
 ###  <a href="https://cart-react-576c5.web.app"> Github Repo </a>
-###  <a href="https://netflix-saddam.netlify.app">LIVE DEMO</a>
+###  <a href="https://github.com/saddamarbaa/amazon-cart">LIVE DEMO</a>
 
 
 # Features
