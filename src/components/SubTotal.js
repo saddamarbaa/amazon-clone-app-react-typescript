@@ -6,10 +6,12 @@ import NumberFormat from "react-number-format";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../features/basket/basketSlice";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SubTotal = () => {
 	const basket = useSelector(selectBasket);
 	const [totalPrice, setTotalPrice] = useState(0);
+
 
 	const getTotalPrice = () => {
 		let initialValue = 0;
@@ -18,6 +20,7 @@ const SubTotal = () => {
 				currentItemValue.price + accumulator,
 			initialValue,
 		);
+		setTotalPrice(totalProductPrice);
 		return totalProductPrice;
 	};
 
@@ -42,7 +45,9 @@ const SubTotal = () => {
 			<p className='subtotal__gift'>
 				<input type='checkbox' /> This order contains a gifts
 			</p>
-			<button>Proceed to checkout</button>
+			<Link to={"/Payment"}>
+				<button>Proceed to checkout</button>
+			</Link>
 		</CartTotal>
 	);
 };

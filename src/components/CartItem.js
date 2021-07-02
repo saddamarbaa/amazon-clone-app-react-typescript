@@ -88,7 +88,9 @@ const CartItem = ({
 					decimalScale={2}
 				/>
 			</div>
-			<button className='checkoutProduct__hideButton'>
+			<button
+				className='checkoutProduct__hideButton'
+				onClick={(event) => removeToBasketHandler(event, id)}>
 				Remove From Basket
 			</button>
 		</Wrapper>

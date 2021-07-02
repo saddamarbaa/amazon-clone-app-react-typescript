@@ -15,8 +15,12 @@ export const basketSlice = createSlice({
 
 	reducers: {
 		setAddToBasketState: (state, action) => {
+			// first solution(Working)
 			// Create a new copy of state.basket array, with action.payload appended to the end
-			state.basket = state.basket.concat(action.payload.item);
+			// state.basket = state.basket.concat(action.payload.item);
+
+			// second solution(Working)
+			state.basket = [...state.basket, action.payload.item];
 		},
 
 		setRemoveFromBasketState: (state, action, id) => {

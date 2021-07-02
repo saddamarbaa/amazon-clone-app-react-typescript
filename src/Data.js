@@ -2,6 +2,34 @@
 
 const items = [
 	{
+		id: 56,
+		title: "Samsung Galaxy Watch 4",
+		stock: "in stock - order soon.",
+		image: "item02.jpg",
+		price: "220.99",
+		description: "A powerful experience enhanced with Galaxy favorites.",
+		category: "Samsung Watches",
+	},
+	{
+		id: 57,
+		title: "Amazon Echo & Alexa Devices· Smart speakers",
+		stock: "In stock on May 8, 2021",
+		image: "item0.jpg",
+		price: "480.99",
+		description:
+			"All the benefits of Alexa, now with noticeably improved sound and a new look. Enjoy premium speakers with equaliser controls, and easily set up .",
+		category: "Smart speakers",
+	},
+	{
+		id: 58,
+		title: "The Lean Startup Book by Eric Ries",
+		stock: "Only 5 left in stock - order soon.",
+		image: "item01.jpg",
+		price: "280.99",
+		description: "his proposed lean startup strategy for startup companies.",
+		category: "Books",
+	},
+	{
 		id: 59,
 		title: "Lenovo Flex 5 14 2-in-1 Laptop, 14.0 FHD (1920 x 1080) ",
 		stock: "Only 3 left in stock - order soon.",
@@ -14,7 +42,7 @@ const items = [
 	{
 		id: 60,
 		title: "Apple iPad Pro 12.9 4th Gen (2020) A2229",
-		stock: " Only 3 left in stock - order soon.",
+		stock: " Only 1 left in stock - order soon.",
 		image: "item-1.jpg",
 		price: "769.00",
 		description:
@@ -89,6 +117,26 @@ const items = [
 		category: "computers & Laptops",
 		description:
 			"Lenovo Flex 5 14 2-in-1 Laptop, 14.0 FHD (1920 x 1080) Touch Display, AMD Ryzen 5 4500U Processor, 16GB DDR4, 256GB SSD, AMD Radeon Graphics, Digital Pen Included, Win 10, 81X20005US, Graphite Grey",
+	},
+	{
+		id: 49.99,
+		title: "All-new Echo  | Smart speaker with Alexa",
+		stock: "Only 3 left in stock - order soon.",
+		image: "item-1-1_.jpg",
+		price: "676.00",
+		category: "electronics ",
+		description:
+			" connects to Alexa, a cloud-based voice service, to play music, set timers and alarms, control compatible smart home devices, and more",
+	},
+	{
+		id: 67,
+		title: "The First Years Stack Up Cup Toys ",
+		stock: "Visit the The First Years Store",
+		image: "item-9.jpg",
+		price: "676.00",
+		category: "Toys ",
+		description:
+			"brightly colored cups stack together with Unique Holes in the Bottom for water play ",
 	},
 ];
 

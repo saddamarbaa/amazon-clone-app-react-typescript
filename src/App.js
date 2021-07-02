@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import { memo, React, useState } from "react";
 import Header from "./components/Header";
 import styled from "styled-components";
 import Home from "./components/Home";

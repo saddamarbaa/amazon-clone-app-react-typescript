@@ -1,4 +1,5 @@
 /** @format */
+
 import firebase from "firebase";
 import "firebase/firestore";
 
@@ -19,6 +20,3 @@ const provider = new firebase.auth.GoogleAuthProvider();
 export { auth, provider };
 
 export default db;
-
-// deployed link
-// https://amazoon-clone-app.web.app

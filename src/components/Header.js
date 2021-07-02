@@ -8,14 +8,24 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Advertisement from "./Advertisement";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
 import { selectBasket } from "../features/basket/basketSlice";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/user/userSlice";
+import { auth } from "../config/firebase";
 
 const Header = () => {
+	const user = useSelector(selectUser);
 	const basket = useSelector(selectBasket);
-
 	const history = useHistory();
+
+	const userSignedOutHandler = () => {
+		// User is signed out(Remove the user from Firebase)
+		if (user) {
+			auth.signOut();
+		}
+	};
+
 	return (
 		<Wrapper>
 			<HeadContainer>
@@ -50,18 +60,34 @@ const Header = () => {
 						</div>
 					</NavOption>
 
-					<NavOption>
-						<span className='firstOption'>Hello, Saddam </span>
-						<span className='secondOption'>Account</span>
-					</NavOption>
-					<NavOption>
-						<span className='firstOption'>Return</span>
-						<span className='secondOption'>& Order</span>
-					</NavOption>
-					<NavOption>
-						<span className='firstOption'>Your</span>
-						<span className='secondOption'>Prime</span>
-					</NavOption>
+					<Link to={!user && "/login"}>
+						<NavOption onClick={userSignedOutHandler}>
+							<span className='firstOption'>
+								Hello,{" "}
+								{user?.displayName
+									? user.displayName
+									: user?.email
+									? user.email
+									: " Guest"}
+							</span>
+							<span className='secondOption'>
+								{user ? " Sign Out" : " Sign-In"}
+							</span>
+						</NavOption>
+					</Link>
+					<Link to={user ? "/order" : "/login"}>
+						<NavOption>
+							<span className='firstOption'>Return</span>
+							<span className='secondOption'>& Order</span>
+						</NavOption>
+					</Link>
+
+					<Link to='/login'>
+						<NavOption>
+							<span className='firstOption'>Your</span>
+							<span className='secondOption'>Prime</span>
+						</NavOption>
+					</Link>
 
 					<BasketOption
 						onClick={() => {
@@ -86,10 +112,21 @@ const Header = () => {
 							Location
 						</div>
 					</NavOption>
-					<NavOption>
-						<span className='firstOption'>Hello, Saddam </span>
-						<span className='secondOption'>Account</span>
-					</NavOption>
+
+					<Link to={!user && "/login"}>
+						<NavOption onClick={userSignedOutHandler}>
+							<span className='firstOption'>
+								{user?.displayName
+									? user.displayName
+									: user?.email
+									? user.email
+									: " Guest"}
+							</span>
+							<span className='secondOption'>
+								{user ? " Sign Out" : " Sign-In"}
+							</span>
+						</NavOption>
+					</Link>
 
 					<BasketOption
 						onClick={() => {

@@ -5,20 +5,34 @@ import styled from "styled-components";
 import SubTotal from "./SubTotal";
 import Banner from "./Banner";
 import CartItem from "./CartItem";
-import { useSelector } from "react-redux";
-import { selectBasket } from "../features/basket/basketSlice";
 import { v4 as uuidv4 } from "uuid";
-
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/user/userSlice";
+import { selectBasket } from "../features/basket/basketSlice";
 const CheckoutProduct = () => {
 	const basket = useSelector(selectBasket);
+	const user = useSelector(selectUser);
 
 	return (
 		<Wrapper>
 			<Banner />
-
 			<TotalCeckOutContainer>
 				<CheckOutLeft>
-					<h2 className='checkout__title'>Your Shopping Basket</h2>
+					<h3 className='checkout__title greeting'>
+						Hello{" "}
+						{user?.displayName
+							? user.displayName
+							: user?.email
+							? user.email
+							: ""}
+					</h3>
+
+					{basket?.length ? (
+						<h2 className='checkout__title'>Your Shopping Basket</h2>
+					) : (
+						<h2 className='checkout__title'>Your Amazon Cart is empty</h2>
+					)}
+
 					{basket?.map(
 						({
 							id,
@@ -97,6 +111,12 @@ const CheckOutLeft = styled.div`
 		margin-right: 10px;
 		padding: 10px;
 		border-bottom: 1px solid lightgray;
+	}
+
+	.checkout__title.greeting {
+		border-bottom: none;
+		color: #f08804;
+		font-size: 20px;
 	}
 `;
 
