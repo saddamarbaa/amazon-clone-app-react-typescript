@@ -158,8 +158,6 @@ Start the server
 
 Project is now complete in React js  so my next step I would love to convert to React + TypeScript + Next.js
 
-The project is: in progress I'm working on it in my free time
-
 
 # Inspiration
 
