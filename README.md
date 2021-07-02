@@ -11,13 +11,13 @@
 -  [Demo](#Demo)
 -  [Technologies](#Technologies)
 -  [Features](#Features)
+-  [Related Projects](#Related_Projects)
 -  [Optimizations](#Optimizations)
 -  [Contributing](#Contributing)
 -  [Status](#status)
 -  [Inspiration](#inspiration)
 -  [Support](#Support)
 -  [Feedback](#Feedback)
--  [Screenshots](#Screenshots)
 -  [Run Locally](#Run_Locally)
 -  [Environment Variables](#Environment)
 -  [Deployment](#Deployment)
@@ -52,12 +52,23 @@
 ## <a href="https://amazoon-clone-app.web.app">LIVE DEMO</a>
 
 
-# Features
--  TODO
+#  Related_Projects
 
-<!-- -  Users can sign in
--  Create rooms
--  Chat with their friend -->
+###  Amazon Cart built with React Js + Firebase
+###  <a href="https://cart-react-576c5.web.app"> Github Repo </a>
+###  <a href="https://netflix-saddam.netlify.app">LIVE DEMO</a>
+
+
+# Features
+
+-  Complete user authentication users can sign in, sign out
+-  Add products to their basket
+-  Checkout total payment
+-  Checkout order page
+-  Used Fake Store API  https://fakestoreapi.com/
+-  Stripe Checkout/Payments (TODO)
+
+
 
 
 # Optimizations
@@ -70,13 +81,16 @@
 -  React useEffect cleanup
 -  Server-side rendering  - Next.js(TODO)
 
+
 # Contributing
 
 Contributions are always welcome!
 
+
 # Support
 
 For support, email saddamarbaas@gmail.com.
+
 
 # Feedback
 
@@ -141,7 +155,10 @@ Start the server
 
 # Status
 
-Project is: in progress I'm working on it in my free time
+Project is now complete in React js  so my next step I would love to convert to React + TypeScript + Next.js
+
+The project is: in progress I'm working on it in my free time
+
 
 # Inspiration
 
@@ -160,22 +177,7 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 -  firebase deploy
 
 
-# Screenshots
 
-## Responsive on large screens
-
-- TODO
-
-
-
-## Responsive on small screens
-
-- TODO
-
-
-## Sign in page
-
-- TODO
 
 
 
@@ -267,6 +269,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
 
 ### `npm test`
 
