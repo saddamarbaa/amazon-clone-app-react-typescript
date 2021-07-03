@@ -9,6 +9,8 @@ import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/user/userSlice";
 import { selectBasket } from "../features/basket/basketSlice";
+import Fade from "react-reveal/Fade";
+
 const CheckoutProduct = () => {
 	const basket = useSelector(selectBasket);
 	const user = useSelector(selectUser);
@@ -18,14 +20,16 @@ const CheckoutProduct = () => {
 			<Banner />
 			<TotalCeckOutContainer>
 				<CheckOutLeft>
-					<h3 className='checkout__title greeting'>
-						Hello{" "}
-						{user?.displayName
-							? user.displayName
-							: user?.email
-							? user.email
-							: ""}
-					</h3>
+					<Fade left>
+						<h3 className='checkout__title greeting'>
+							Hello{" "}
+							{user?.displayName
+								? user.displayName
+								: user?.email
+								? user.email
+								: ""}
+						</h3>
+					</Fade>
 
 					{basket?.length ? (
 						<h2 className='checkout__title'>Your Shopping Basket</h2>

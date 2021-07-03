@@ -8,6 +8,7 @@ import { IconButton } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/user/userSlice";
+import Fade from "react-reveal/Fade";
 
 const Advertisement = () => {
 	const [burgerMenuStatus, SetBurgerMenuStatus] = useState(false);
@@ -45,77 +46,79 @@ const Advertisement = () => {
 
 			{/* Side bar */}
 			<BurgerNav showMenu={burgerMenuStatus}>
-				<div className='greeting'>
-					<div className='greeting-div'>
+				<Fade left>
+					<div className='greeting'>
+						<div className='greeting-div'>
+							<IconButton>
+								<AccountCircleIcon className='icon' />
+							</IconButton>
+							<h3>Hello {user?.displayName ? user.displayName : ""}</h3>
+						</div>
 						<IconButton>
-							<AccountCircleIcon className='icon' />
+							<CloseIcon
+								className='icon'
+								onClick={() => {
+									SetBurgerMenuStatus(false);
+								}}
+							/>
 						</IconButton>
-						<h3>Hello {user?.displayName ? user.displayName : ""}</h3>
 					</div>
-					<IconButton>
-						<CloseIcon
-							className='icon'
-							onClick={() => {
-								SetBurgerMenuStatus(false);
-							}}
-						/>
-					</IconButton>
-				</div>
 
-				<h3>Digital Content & Devices</h3>
+					<h3>Digital Content & Devices</h3>
 
-				<div className='links-container'>
-					<li>
-						<a>Amazon Music</a>
-					</li>
-					<li>
-						<a>Kindle E-readers & Books</a>
-					</li>
-					<li>
-						<a>Appstore for Android </a>
-					</li>
-				</div>
+					<div className='links-container'>
+						<li>
+							<a>Amazon Music</a>
+						</li>
+						<li>
+							<a>Kindle E-readers & Books</a>
+						</li>
+						<li>
+							<a>Appstore for Android </a>
+						</li>
+					</div>
 
-				<h3>Shop By Department</h3>
-				<div className='links-container'>
-					<li>
-						<a>Electronics</a>
-					</li>
-					<li>
-						<a>Computers</a>
-					</li>
-					<li>
-						<a>Smart Home</a>
-					</li>
-					<li>
-						<a>Arts & Crafts </a>
-					</li>
-				</div>
+					<h3>Shop By Department</h3>
+					<div className='links-container'>
+						<li>
+							<a>Electronics</a>
+						</li>
+						<li>
+							<a>Computers</a>
+						</li>
+						<li>
+							<a>Smart Home</a>
+						</li>
+						<li>
+							<a>Arts & Crafts </a>
+						</li>
+					</div>
 
-				<h3>Programs & Feature3</h3>
-				<div className='links-container'>
-					<li>
-						<a>Gift Cards</a>
-					</li>
-					<li>
-						<a>Amazon Live</a>
-					</li>
-					<li>
-						<a>International Shopping </a>
-					</li>
-				</div>
-				<h3>Help & Settings</h3>
-				<div className='links-container'>
-					<li>
-						<a>Your Account </a>
-					</li>
-					<li>
-						<a>English - EN </a>
-					</li>
-					<li>
-						<a>Customs Services </a>
-					</li>
-				</div>
+					<h3>Programs & Feature3</h3>
+					<div className='links-container'>
+						<li>
+							<a>Gift Cards</a>
+						</li>
+						<li>
+							<a>Amazon Live</a>
+						</li>
+						<li>
+							<a>International Shopping </a>
+						</li>
+					</div>
+					<h3>Help & Settings</h3>
+					<div className='links-container'>
+						<li>
+							<a>Your Account </a>
+						</li>
+						<li>
+							<a>English - EN </a>
+						</li>
+						<li>
+							<a>Customs Services </a>
+						</li>
+					</div>
+				</Fade>
 			</BurgerNav>
 		</Wrapper>
 	);

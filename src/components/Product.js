@@ -7,6 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useDispatch } from "react-redux";
 import { setAddToBasketState } from "../features/basket/basketSlice";
+import Fade from "react-reveal/Fade";
 
 const Product = ({ id, title, image, price, category, description, stock }) => {
 	const [starRating, setStarRating] = useState(3);
@@ -43,63 +44,65 @@ const Product = ({ id, title, image, price, category, description, stock }) => {
 	};
 
 	return (
-		<Wrapper>
-			<div className='product_container'>
-				<div className='category__container'>{category}</div>
-				<div className='inner__container'>
-					<div className='image__container'>
-						<LazyLoadImage
-							effect='blur'
-							placeholderSrc='https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg'
-							className='product__image'
-							src={image}
-							alt='demo image'
-							height={190}
-							weight={190}
-							objectFit='contain'
-						/>
+		<Fade bottom cascade>
+			<Wrapper>
+				<div className='product_container'>
+					<div className='category__container'>{category}</div>
+					<div className='inner__container'>
+						<div className='image__container'>
+							<LazyLoadImage
+								effect='blur'
+								placeholderSrc='https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg'
+								className='product__image'
+								src={image}
+								alt='demo image'
+								height={190}
+								weight={190}
+								objectFit='contain'
+							/>
+						</div>
+						<ProductInfo>
+							<p className='product__title'>{truncate(title, 55)}</p>
+
+							<p className='product__rating'>
+								{Array(starRating ? starRating : 4)
+									.fill()
+									.map((star) => {
+										return <span key={uuidv4()}>✶</span>;
+									})}
+							</p>
+
+							<p className='description__container'>
+								{truncate(description, 70)}
+							</p>
+
+							<p className='product__price'>
+								<small>$</small>
+								<strong>{price}</strong>
+							</p>
+							<p className='product__info-stock'>
+								{stock ? stock : "In Stock - order soon."}
+							</p>
+						</ProductInfo>
+
+						<button
+							onClick={(event) =>
+								addToBasketHandler(
+									event,
+									id,
+									title,
+									image,
+									price,
+									category,
+									description,
+								)
+							}>
+							Add to Basket
+						</button>
 					</div>
-					<ProductInfo>
-						<p className='product__title'>{truncate(title, 55)}</p>
-
-						<p className='product__rating'>
-							{Array(starRating ? starRating : 4)
-								.fill()
-								.map((star) => {
-									return <span key={uuidv4()}>✶</span>;
-								})}
-						</p>
-
-						<p className='description__container'>
-							{truncate(description, 70)}
-						</p>
-
-						<p className='product__price'>
-							<small>$</small>
-							<strong>{price}</strong>
-						</p>
-						<p className='product__info-stock'>
-							{stock ? stock : "In Stock - order soon."}
-						</p>
-					</ProductInfo>
-
-					<button
-						onClick={(event) =>
-							addToBasketHandler(
-								event,
-								id,
-								title,
-								image,
-								price,
-								category,
-								description,
-							)
-						}>
-						Add to Basket
-					</button>
 				</div>
-			</div>
-		</Wrapper>
+			</Wrapper>
+		</Fade>
 	);
 };
 

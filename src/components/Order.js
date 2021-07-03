@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/user/userSlice";
 import { selectBasket } from "../features/basket/basketSlice";
+import Fade from "react-reveal/Fade";
 
 const Order = () => {
 	const basket = useSelector(selectBasket);
@@ -14,15 +15,16 @@ const Order = () => {
 
 	return (
 		<OrderPageWrapper>
-			<h3 className='checkout__title greeting'>
-				Hello{" "}
-				{user?.displayName
-					? user.displayName
-					: user?.email
-					? user.email
-					: ""}
-			</h3>
-
+			<Fade left>
+				<h3 className='checkout__title greeting'>
+					Hello{" "}
+					{user?.displayName
+						? user.displayName
+						: user?.email
+						? user.email
+						: ""}
+				</h3>
+			</Fade>
 			{basket?.length ? (
 				<h2 className='checkout__title'>Your Orders</h2>
 			) : (

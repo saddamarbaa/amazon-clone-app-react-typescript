@@ -6,9 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import NumberFormat from "react-number-format";
 import { setRemoveFromBasketState } from "../features/basket/basketSlice";
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import Fade from "react-reveal/Fade";
 
 const CartItem = ({
 	id,
@@ -44,56 +44,59 @@ const CartItem = ({
 	};
 
 	return (
-		<Wrapper className='checkoutProduct'>
-			<div className='product__image'>
-				<LazyLoadImage
-					effect='blur'
-					placeholderSrc='https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg'
-					src={image}
-					alt='demo image'
-				/>
-			</div>
-
-			<div className='checkoutProduct__info'>
-				<div className='checkoutProduct__title'>
-					<h2>{title}</h2>
+		<Fade bottom cascade>
+			<Wrapper className='checkoutProduct'>
+				<div className='product__image'>
+					<LazyLoadImage
+						effect='blur'
+						placeholderSrc='https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg'
+						src={image}
+						alt='demo image'
+					/>
 				</div>
 
-				<div className='checkoutProduct__description'>
-					{truncate(description, 260)}
+				<div className='checkoutProduct__info'>
+					<div className='checkoutProduct__title'>
+						<h2>{title}</h2>
+					</div>
+
+					<div className='checkoutProduct__description'>
+						{truncate(description, 260)}
+					</div>
+
+					<div className='checkoutProduct__info-stock'>
+						{stock ? stock : "In Stock"}
+					</div>
+					<div className='checkoutProduct__rating'>
+						{Array(starRating ? starRating : 4)
+							.fill()
+							.map((star) => {
+								return <span key={uuidv4()}>✶</span>;
+							})}
+					</div>
+					<button
+						className='checkoutProduct__showButton'
+						onClick={(event) => removeToBasketHandler(event, id)}>
+						Remove From Basket
+					</button>
+				</div>
+				<div className='checkoutProduct__price'>
+					<NumberFormat
+						value={price}
+						displayType={"text"}
+						thousandSeparator={true}
+						prefix={"$"}
+						decimalScale={2}
+					/>
 				</div>
 
-				<div className='checkoutProduct__info-stock'>
-					{stock ? stock : "In Stock"}
-				</div>
-				<div className='checkoutProduct__rating'>
-					{Array(starRating ? starRating : 4)
-						.fill()
-						.map((star) => {
-							return <span key={uuidv4()}>✶</span>;
-						})}
-				</div>
 				<button
-					className='checkoutProduct__showButton'
+					className='checkoutProduct__hideButton'
 					onClick={(event) => removeToBasketHandler(event, id)}>
 					Remove From Basket
 				</button>
-			</div>
-			<div className='checkoutProduct__price'>
-				<NumberFormat
-					value={price}
-					displayType={"text"}
-					thousandSeparator={true}
-					prefix={"$"}
-					decimalScale={2}
-				/>
-			</div>
-			<button
-				className='checkoutProduct__hideButton'
-				onClick={(event) => removeToBasketHandler(event, id)}>
-				Remove From Basket
-			</button>
-		</Wrapper>
+			</Wrapper>
+		</Fade>
 	);
 };
 
