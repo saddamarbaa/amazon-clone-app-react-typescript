@@ -208,7 +208,7 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 
 
 
-![image](https://user-images.githubusercontent.com/51326421/121612800-562a3580-ca85-11eb-91f1-450af5259953.png)
+
 
 
 
@@ -252,7 +252,8 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 
 ##  Ckeckout Page 
 
-![image](https://user-images.githubusercontent.com/51326421/124346921-c141d480-dc0b-11eb-8a8f-af63ecd388d5.png)
+![image](https://user-images.githubusercontent.com/51326421/124347195-83de4680-dc0d-11eb-9bcd-a0d485a6ec52.png)
+
 
 
 
