@@ -82,6 +82,7 @@ const TotalCeckOutContainer = styled.div`
 	height: max-content;
 	display: flex;
 	justify-content: space-between;
+	max-width: 1500px;
 
 	@media (max-width: 992px) {
 		flex-direction: column;

@@ -33,10 +33,12 @@ const Payment = () => {
 	return (
 		<PaymentWrapper>
 			<div className='payment__container'>
-				<h1>
-					Ckeckout(
-					<Link to='/CheckoutProduct'> {basket?.length} items</Link>)
-				</h1>
+				<div className='checkout-container'>
+					<h1>
+						Ckeckout(
+						<Link to='/CheckoutProduct'> {basket?.length} items</Link>)
+					</h1>
+				</div>
 
 				{/* Payment Section - Delivery address */}
 				<div className='payment__section'>
@@ -117,11 +119,15 @@ const PaymentWrapper = styled.div`
 	height: auto;
 	background: white !important;
 
+	.payment__container .checkout-container {
+		background: rgb(234, 234, 237);
+		width: 100%;
+	}
+
 	.payment__container h1 {
 		text-align: center;
 		padding: 20px;
 		font-weight: 400;
-		background: rgb(234, 234, 237);
 		border-bottom: 1px solid lightgray;
 		max-width: 1500px;
 
@@ -161,7 +167,6 @@ const PaymentWrapper = styled.div`
 
 	.payment__items {
 		flex: 1;
-		max-width: 900px;
 	}
 
 	.payment__details {
