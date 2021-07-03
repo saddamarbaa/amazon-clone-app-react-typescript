@@ -21,6 +21,7 @@
 -  [Run Locally](#Run_Locally)
 -  [Environment Variables](#Environment)
 -  [Deployment](#Deployment)
+-  [Screenshots](#Screenshots)
 
 
 # Author
@@ -174,6 +175,89 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 -  firebase init
 -  npm run build
 -  firebase deploy
+
+
+
+
+# Screenshots
+
+
+
+
+##  Sign in page 
+![image](https://user-images.githubusercontent.com/51326421/124346757-c81c1780-dc0a-11eb-9d8d-aef500708e77.png)
+
+
+
+
+## Log in Page
+![image](https://user-images.githubusercontent.com/51326421/124346744-b20e5700-dc0a-11eb-9af8-5060947a2f0b.png)
+
+
+
+
+
+
+
+##  Responsive on large screens - Home Page 
+![image](https://user-images.githubusercontent.com/51326421/124346578-dc134980-dc09-11eb-912e-ad46920dbf76.png)
+
+
+![image](https://user-images.githubusercontent.com/51326421/124346713-87bc9980-dc0a-11eb-8535-cceabec50993.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Responsive on mobile and tablet screens 
+![image](https://user-images.githubusercontent.com/51326421/124346621-1e3c8b00-dc0a-11eb-80ef-aba8e8388ee1.png)
+
+
+
+## Responsive on small screens
+
+![image](https://user-images.githubusercontent.com/51326421/124346646-390eff80-dc0a-11eb-860c-9e0f72c677fe.png)
+
+
+
+
+
+
+##  Shopping Basket Page 
+
+
+![image](https://user-images.githubusercontent.com/51326421/124346795-0f0a0d00-dc0b-11eb-8cf6-daffbafb10e8.png)
+
+
+
+
+
+##  Orders Page 
+
+
+![image](https://user-images.githubusercontent.com/51326421/124346864-745dfe00-dc0b-11eb-843e-26a42831f67e.png)
+
+
+
+
+##  Ckeckout Page 
+
+![image](https://user-images.githubusercontent.com/51326421/124347195-83de4680-dc0d-11eb-9bcd-a0d485a6ec52.png)
+
+
+
+
+
 
 
 
