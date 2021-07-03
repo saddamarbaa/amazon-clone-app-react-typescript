@@ -44,8 +44,8 @@ const Product = ({ id, title, image, price, category, description, stock }) => {
 	};
 
 	return (
-		<Fade bottom cascade>
-			<Wrapper>
+		<Wrapper>
+			<Fade bottom>
 				<div className='product_container'>
 					<div className='category__container'>{category}</div>
 					<div className='inner__container'>
@@ -101,8 +101,8 @@ const Product = ({ id, title, image, price, category, description, stock }) => {
 						</button>
 					</div>
 				</div>
-			</Wrapper>
-		</Fade>
+			</Fade>
+		</Wrapper>
 	);
 };
 
