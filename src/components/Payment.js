@@ -167,6 +167,7 @@ const PaymentWrapper = styled.div`
 
 	.payment__items {
 		flex: 1;
+		max-width: 1000px;
 	}
 
 	.payment__details {
