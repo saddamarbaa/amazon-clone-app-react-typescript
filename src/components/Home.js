@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { memo } from "react";
+import React, { memo, useRef, useEffect } from "react";
 import styled from "styled-components";
 import ProductFeed from "./ProductFeed ";
 import request from "../api/requests";
@@ -10,8 +10,34 @@ import productData from "../Data";
 import { v4 as uuidv4 } from "uuid";
 
 const Home = () => {
+	const autoScrollToBottomRef = useRef(null);
+
+	// Auto Scroll functionality
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+		// Auto Scroll functionality
+		autoScrollToBottomRef?.current?.scrollIntoView({
+			behavior: "smooth",
+		});
+	}, []);
+
 	return (
 		<Wrapper>
+
+				{/* Empty div for auto scroll */}
+				<div
+					ref={autoScrollToBottomRef}
+					style={{
+						paddingTop: "7rem",
+						position: "absolute",
+						top: "-100px",
+					}}
+					className='auto-scroll'></div>
+
+			
 			<Banner />
 			<GridContainer>
 				{productData?.map(

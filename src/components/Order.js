@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { memo } from "react";
+import React, { memo, useRef, useEffect } from "react";
 import styled from "styled-components";
 import CartItem from "./CartItem";
 import { v4 as uuidv4 } from "uuid";
@@ -13,8 +13,32 @@ const Order = () => {
 	const basket = useSelector(selectBasket);
 	const user = useSelector(selectUser);
 
+	const autoScrollToBottomRef = useRef(null);
+
+	// Auto Scroll functionality
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+		// Auto Scroll functionality
+		autoScrollToBottomRef?.current?.scrollIntoView({
+			behavior: "smooth",
+		});
+	}, []);
+
 	return (
 		<OrderPageWrapper>
+			{/* Empty div for auto scroll */}
+			<div
+				ref={autoScrollToBottomRef}
+				style={{
+					paddingTop: "7rem",
+					position: "absolute",
+					top: "-100px",
+				}}
+				className='auto-scroll'></div>
+
 			<Fade left>
 				<h3 className='checkout__title greeting'>
 					Hello{" "}

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { memo } from "react";
+import React, { memo, useRef, useEffect } from "react";
 import styled from "styled-components";
 import SubTotal from "./SubTotal";
 import Banner from "./Banner";
@@ -14,11 +14,34 @@ import Fade from "react-reveal/Fade";
 const CheckoutProduct = () => {
 	const basket = useSelector(selectBasket);
 	const user = useSelector(selectUser);
+	const autoScrollToBottomRef = useRef(null);
+
+	// Auto Scroll functionality
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+		// Auto Scroll functionality
+		autoScrollToBottomRef?.current?.scrollIntoView({
+			behavior: "smooth",
+		});
+	}, []);
 
 	return (
 		<Wrapper>
 			<Banner />
 			<TotalCeckOutContainer>
+				{/* Empty div for auto scroll */}
+				<div
+					ref={autoScrollToBottomRef}
+					style={{
+						paddingTop: "7rem",
+						position: "absolute",
+						top: "-100px",
+					}}
+					className='auto-scroll'></div>
+
 				<CheckOutLeft>
 					<Fade left>
 						<h3 className='checkout__title greeting'>
