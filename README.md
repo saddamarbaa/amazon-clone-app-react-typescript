@@ -50,7 +50,7 @@
 
 # Demo
 
-## <a href="https://amazoon-clone-app.web.app">LIVE DEMO</a>
+## <a href="https://amazon-clone-hckm0zufe-saddamarbaa.vercel.app/">LIVE DEMO</a>
 
 
 #  Related_Projects
