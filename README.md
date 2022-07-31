@@ -1,10 +1,9 @@
-# Amazon Clone
+# Amazon Clone App
 
- Building Amazon Clone App with React Js, Redux, Styled Component, 
- Material-UI, Cloud Functions, Firebase, Firebase Hosting, 
-  with complete user authentication (a mobile-friendly).
- 
- 
+Building Amazon Clone App with React Js, TypeScript, Redux, Styled Component,
+Material-UI, Cloud Functions, Vercel Hosting, with complete user authentication (a mobile-friendly).
+
+
 # Table of contents
 
 -  [Author](#Author)
@@ -36,29 +35,69 @@
 
 -  React Js
 -  Redux
+-  Redux
 -  Styled Component
 -  Material-UI
 
 **Server:**
 
--  Firebase Realtime Database
--  Firebase Hosting
+-  Vercel Hosting
 -  Firebase Google Authentication
 -  Firebase Email and password Authentication
-
-
 
 # Demo
 
 ## <a href="https://amazon-clone-hckm0zufe-saddamarbaa.vercel.app/">LIVE DEMO</a>
 
 
-#  Related_Projects
 
-###  Amazon Cart built with React Js + Firebase
+# Related_Projects
 
-###  <a href="https://github.com/saddamarbaa/amazon-cart"> Github Repo </a>
-###  <a href="https://cart-react-576c5.web.app">LIVE DEMO</a>
+
+###  Amazon Cart built with React Js 
+
+###  <a href="https://github.com/saddamarbaa/amazon-cart-app-react-typescript"> Github Repo </a>
+###  <a href="https://amazon-cart-app.vercel.app/">LIVE DEMO</a>
+
+
+### Airbnb Clone App built with React Js + Next Js + TypeScript + Redux + Tailwind CSS
+
+### <a href="https://github.com/saddamarbaa/airbnb-clone-app-nex-js"> Github Repo </a>
+
+### <a href="https://airbnb-clone-app-nex-js.vercel.app/">LIVE DEMO</a>
+
+
+###  Tesla Clone App built with  React Js + TypeScript + Redux + Styled Components + Material-UI + Vercel Hosting 
+
+###  <a href="https://github.com/saddamarbaa/tesla-clone-app-react-typescript"> Github Repo </a>
+###  <a href="https://tesla-clone-app-neon.vercel.app/">LIVE DEMO</a>
+
+
+###  Netflix Clone App built with React Js + TypeScript + Redux + Stripe Checkout/Payments + Vercel Hosting + Firebase
+
+###  <a href="https://github.com/saddamarbaa/netflix-clone-app-react-typescript"> Github Repo </a>
+###  <a href="https://netflix-clone-app-react-typescript.vercel.app/">LIVE DEMO</a>
+
+
+###  LinkedIn Clone App built with  React Js + TypeScript + Redux + Styled Components + Material-UI + Firebase Realtime Database + Vercel Hosting 
+
+###  <a href="https://github.com/saddamarbaa/LinkedIn-clone-app-react-typescript"> Github Repo </a>
+###  <a href="https://linkedin-clone-app-navy.vercel.app/">LIVE DEMO</a>
+
+
+
+### Facebook Clone App built with React Js + Next Js + TypeScript + Redux + Styled Components
+
+### <a href="https://github.com/saddamarbaa/facebook-clone-app-nex-js"> Github Repo </a>
+
+### <a href="https://facebook-clone-app-nex-js.vercel.app/">LIVE DEMO</a>
+
+### Instagram Clone App built with React Js + Next Js + TypeScript + Redux + Tailwind CSS + Heroicons
+
+### <a href="https://github.com/saddamarbaa/Instagram-clone-app-nex-js"> Github Repo </a>
+
+### <a href="https://instagram-clone-app-nex-js.vercel.app/">LIVE DEMO</a>
+
 
 
 # Features
@@ -69,7 +108,7 @@
 -  Checkout order page
 -  Used Fake Store API  https://fakestoreapi.com/
 -  Stripe Checkout/Payments (TODO)
-
+-  Cloud Functions (TODO)
 
 
 
@@ -120,13 +159,13 @@ https://www.facebook.com/saddam.arbaa
 Clone the project
 
 ```bash
-  https://github.com/saddamarbaa/amazon-clone-app
+  https://github.com/saddamarbaa/amazon-clone-app-react-typescript
 ```
 
 Go to the project directory
 
 ```bash
-  cd amazon-clone-app
+  cd amazon-clone-app-react-typescript
 ```
 
 Install dependencies
@@ -182,16 +221,25 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 # Screenshots
 
 
-
-
 ##  Sign in page 
-![image](https://user-images.githubusercontent.com/51326421/124346757-c81c1780-dc0a-11eb-9d8d-aef500708e77.png)
+
+![image](https://user-images.githubusercontent.com/51326421/182025113-9596d8fd-2e5d-451a-9732-483838994235.png)
+
+
+![image](https://user-images.githubusercontent.com/51326421/182025100-e6dfa4d7-b332-4e86-9a32-dbe7a6819f7e.png)
+
 
 
 
 
 ## Log in Page
-![image](https://user-images.githubusercontent.com/51326421/124346744-b20e5700-dc0a-11eb-9af8-5060947a2f0b.png)
+![image](https://user-images.githubusercontent.com/51326421/182025171-beadc3b5-bf69-4640-9076-870559971b7d.png)
+
+
+
+
+![image](https://user-images.githubusercontent.com/51326421/182025203-8248c309-4503-4199-a2ab-0c6abe405b4e.png)
+
 
 
 
@@ -200,14 +248,10 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 
 
 ##  Responsive on large screens - Home Page 
-![image](https://user-images.githubusercontent.com/51326421/124346578-dc134980-dc09-11eb-912e-ad46920dbf76.png)
+![image](https://user-images.githubusercontent.com/51326421/182024925-d892e3ef-fd02-4c50-a167-d52e37bad319.png)
 
 
 ![image](https://user-images.githubusercontent.com/51326421/124346713-87bc9980-dc0a-11eb-8535-cceabec50993.png)
-
-
-
-
 
 
 
@@ -258,129 +302,3 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 
 
 
-
-
-
-
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
