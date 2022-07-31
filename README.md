@@ -47,7 +47,7 @@ Material-UI, Cloud Functions, Vercel Hosting, with complete user authentication 
 
 # Demo
 
-## <a href="https://amazon-clone-hckm0zufe-saddamarbaa.vercel.app/">LIVE DEMO</a>
+## <a href="https://amazon-clone-murex-six.vercel.app/">LIVE DEMO</a>
 
 
 
@@ -223,24 +223,24 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 
 ##  Sign in page 
 
-![image](https://user-images.githubusercontent.com/51326421/182025113-9596d8fd-2e5d-451a-9732-483838994235.png)
+![image](https://user-images.githubusercontent.com/51326421/182026110-c302d4ed-b122-4604-af28-a205f668ee9d.png)
 
 
-![image](https://user-images.githubusercontent.com/51326421/182025100-e6dfa4d7-b332-4e86-9a32-dbe7a6819f7e.png)
+
+![image](https://user-images.githubusercontent.com/51326421/182026122-cc4166dc-26fc-4c83-af52-edb1834d76d9.png)
+
 
 
 
 
 
 ## Log in Page
-![image](https://user-images.githubusercontent.com/51326421/182025171-beadc3b5-bf69-4640-9076-870559971b7d.png)
+![image](https://user-images.githubusercontent.com/51326421/182026060-e65c7f0e-15ec-4c02-a8e7-0283416e452a.png)
 
 
 
 
-![image](https://user-images.githubusercontent.com/51326421/182025203-8248c309-4503-4199-a2ab-0c6abe405b4e.png)
-
-
+![image](https://user-images.githubusercontent.com/51326421/182026095-adb804fd-e404-40fe-8da7-142df5ada363.png)
 
 
 
@@ -248,7 +248,7 @@ To deploy this project on firebase Flow the firebase documentation <a href="http
 
 
 ##  Responsive on large screens - Home Page 
-![image](https://user-images.githubusercontent.com/51326421/182024925-d892e3ef-fd02-4c50-a167-d52e37bad319.png)
+![image](https://user-images.githubusercontent.com/51326421/182025905-0f9d68d8-49a1-44a4-9268-057c984066fc.png)
 
 
 ![image](https://user-images.githubusercontent.com/51326421/124346713-87bc9980-dc0a-11eb-8535-cceabec50993.png)
