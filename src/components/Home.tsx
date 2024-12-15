@@ -1,14 +1,19 @@
 import React, { memo, useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { v4 as uuidv4 } from 'uuid'
+import { useSelector } from 'react-redux'
 
 import ProductFeed from './ProductFeed'
-import request from '../api/requests'
+// import request from '../api/requests'
 import Banner from './Banner'
 import Product from './Product'
-import productData from '../data/Data'
+
+import { selectAllProducts } from '../features/products/productSlice'
 
 const Home = () => {
+	const { allProducts, electronicProducts, generalProducts } =
+		useSelector(selectAllProducts)
+
+	// console.log(product)
 	const autoScrollToBottomRef = useRef<HTMLDivElement | null>(null)
 
 	// Auto Scroll functionality
@@ -37,11 +42,11 @@ const Home = () => {
 
 			<Banner />
 			<GridContainer>
-				{productData?.map(
+				{allProducts?.map(
 					({ id, title, image, price, category, description, stock }) => {
 						return (
 							<Product
-								key={uuidv4()}
+								key={id}
 								id={id}
 								title={title}
 								image={process.env.PUBLIC_URL + '/items/' + image}
@@ -55,8 +60,10 @@ const Home = () => {
 				)}
 			</GridContainer>
 
-			<ProductFeed fetchUrl={request.fetchAll} />
-			<ProductFeed fetchUrl={request.fetchElectronics} />
+			<ProductFeed products={generalProducts} />
+			<ProductFeed products={electronicProducts} />
+			{/* <ProductFeed fetchUrl={request.fetchAll} />
+			<ProductFeed fetchUrl={request.fetchElectronics} /> */}
 		</Wrapper>
 	)
 }

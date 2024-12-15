@@ -62,14 +62,6 @@ const Order = () => {
 					category,
 					description,
 					stock,
-				}: {
-					id: any
-					title: any
-					image: any
-					price: any
-					category: any
-					description: any
-					stock: any
 				}) => {
 					return (
 						<CartItem
