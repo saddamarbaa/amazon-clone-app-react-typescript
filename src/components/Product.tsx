@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { useDispatch } from 'react-redux'
-import { setAddToBasketState } from '../features/basket/basketSlice'
 //  @ts-ignore
 import Fade from 'react-reveal/Fade'
-
 import { ProductType } from '../types'
 import { getRandomIntNumberBetween, truncate } from '../utils'
+import { setAddToBasketState } from '../features/basket/basketSlice'
 
 const Product = ({
 	id,
@@ -22,7 +21,7 @@ const Product = ({
 }: ProductType) => {
 	const [starRating, setStarRating] = useState(3)
 	const dispatch = useDispatch()
-
+	
 	const addToBasketHandler = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 	) => {
@@ -31,10 +30,10 @@ const Product = ({
 		dispatch(
 			setAddToBasketState({
 				item: {
-					id: uuidv4(),
+					id: uuidv4() as unknown as number,
 					title: title,
 					image: image,
-					rating: starRating,
+					rating: {count:0,rate:starRating},
 					price: price,
 					category: category,
 					description: description,
@@ -48,6 +47,9 @@ const Product = ({
 	useEffect(() => {
 		setStarRating(Math.floor(Math.random() * 6))
 	}, [id])
+
+
+	
 
 	return (
 		<Wrapper>

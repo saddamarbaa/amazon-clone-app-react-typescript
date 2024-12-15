@@ -207,8 +207,7 @@ const LogInWrapper = styled.div`
 	background: #fff;
 	display: flex;
 	justify-content: center;
-	padding: 20px;
-	padding-top: 5px;
+	padding: 3rem;
 	font-family: 'Amazon Ember', Arial, sans-serif;
 `
 

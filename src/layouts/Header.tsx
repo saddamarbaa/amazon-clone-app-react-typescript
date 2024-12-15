@@ -1,4 +1,3 @@
-import React, { memo } from 'react'
 import styled from 'styled-components'
 import SearchIcon from '@material-ui/icons/Search'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
@@ -7,18 +6,18 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import Advertisement from '../components/Advertisement'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { selectBasket } from '../features/basket/basketSlice'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import { useSelector } from 'react-redux'
-
 import { auth, signOut } from '../config/firebase'
+import { filterProducts } from '../features/products/productSlice'
 
 const Header = () => {
 	const [user] = useAuthState(auth)
 	const basket = useSelector(selectBasket)
 	const history = useNavigate()
-
+	const dispatch = useDispatch()
 	const userSignedOutHandler = () => {
 		// User is signed out(Remove the user from Firebase)
 		if (user) {
@@ -31,6 +30,10 @@ const Header = () => {
 					// An error happened.
 				})
 		}
+	}
+
+	const filterProductHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(filterProducts(event.target.value))
 	}
 
 	return (
@@ -46,7 +49,7 @@ const Header = () => {
 				</LogoContainer>
 
 				<SearchContainer>
-					<input type="text" />
+					<input type="text" onChange={filterProductHandler} />
 					<SearchIcon className="SearchIcon" />
 				</SearchContainer>
 
@@ -156,7 +159,7 @@ const Header = () => {
 	)
 }
 
-export default memo(Header)
+export default Header
 
 const Wrapper = styled.div`
 	width: 100%;

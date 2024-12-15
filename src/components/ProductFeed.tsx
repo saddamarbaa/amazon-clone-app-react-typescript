@@ -1,28 +1,10 @@
-import React, { memo, useEffect, useState } from 'react'
+
 import styled from 'styled-components'
-import { v4 as uuidv4 } from 'uuid'
-import axios from '../api/axios'
 import Product from './Product'
+import { ProductType } from '../types'
 
-const ProductFeed = ({ fetchUrl }: { fetchUrl: string }) => {
-	// Initialize Product variable with empty array
-	const [products, setProducts] = useState([])
-
-	// function to fetch Product information
-	async function fetchProductData() {
-		try {
-			const request = await axios.get(fetchUrl)
-			setProducts(request.data)
-			return request
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-	// call fetchMoviesData()
-	useEffect(() => {
-		fetchProductData()
-	}, [fetchUrl])
+const ProductFeed = ({ products }: { products: ProductType[] }) => {
+	
 
 	return (
 		<GridContainer>
@@ -30,7 +12,7 @@ const ProductFeed = ({ fetchUrl }: { fetchUrl: string }) => {
 				({ id, title, image, price, category, description, stock }) => {
 					return (
 						<Product
-							key={uuidv4()}
+							key={id}
 							id={id}
 							title={title}
 							image={image}
@@ -46,7 +28,7 @@ const ProductFeed = ({ fetchUrl }: { fetchUrl: string }) => {
 	)
 }
 
-export default memo(ProductFeed)
+export default ProductFeed
 
 const GridContainer = styled.div`
 	width: 90%;
