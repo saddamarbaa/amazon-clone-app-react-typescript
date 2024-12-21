@@ -11,6 +11,7 @@ import CheckOutScreen from './screens/CheckOutScreen'
 import PaymentScreen from './screens/PaymentScreen'
 import Loading from './components/Loading'
 import { auth } from './config/firebase'
+import NotFoundScreen from './screens/NotFoundScreen'
 
 function App() {
 	const [user, loading, error] = useAuthState(auth)
@@ -30,6 +31,7 @@ function App() {
 					<Route path="/payment" element={<PaymentScreen />} />
 					<Route path="/order" element={<OrderScreen />} />
 					<Route path="/checkout" element={<CheckOutScreen />} />
+					<Route path="*" element={<NotFoundScreen />} />
 				</Routes>
 			) : (
 				<LoginScreen />
