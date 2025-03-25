@@ -1,14 +1,10 @@
-import React from 'react'
+import Checkout from '@/components/Checkout/Checkout'
+import Layout from '@/components/wrapper'
 
-import Checkout from '../components/CheckoutProduct'
-import LayoutHigherOrderComponent from '../layouts/index'
-
-function CheckOutScreen() {
+export default function CheckoutScreen() {
 	return (
-		<LayoutHigherOrderComponent>
+		<Layout>
 			<Checkout />
-		</LayoutHigherOrderComponent>
+		</Layout>
 	)
 }
-
-export default CheckOutScreen

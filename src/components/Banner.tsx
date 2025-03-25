@@ -1,12 +1,22 @@
-import React from 'react'
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
-import styled from 'styled-components'
+
+const banners = [
+	{ src: '/images/banner3.jpg', alt: 'Amazon Banner 1' },
+	{ src: '/images/banner5.jpg', alt: 'Amazon Banner 2' },
+	{ src: '/images/banner8.jpg', alt: 'Amazon Banner 3' },
+	{ src: '/images/banner4.jpg', alt: 'Amazon Banner 4' },
+	{ src: '/images/banner.jpg', alt: 'Amazon Banner 5' },
+	{ src: '/images/banner2.jpg', alt: 'Amazon Banner 6' },
+	{ src: '/images/banner10.jpg', alt: 'Amazon Banner 7' },
+]
 
 const Banner = () => {
 	return (
-		<Wrapper>
-			<BannerContainer>
+		<div className="w-full flex flex-col">
+			{' '}
+			{/* Add white background */}
+			<div className="z-[-3] w-full flex justify-center mx-auto mt-[-10px] mb-[-25%]">
 				<Carousel
 					infiniteLoop
 					autoPlay
@@ -14,72 +24,26 @@ const Banner = () => {
 					showIndicators={false}
 					showThumbs={false}
 					interval={4000}>
-					<div>
-						<img src="/images/banner3.jpg" alt="amazon banner" />
-					</div>
-					<div>
-						<img src="/images/banner5.jpg" alt="amazon banner" />
-					</div>
-					<div>
-						<img src="/images/baner7.jpg" alt="amazon banner" />
-					</div>
-
-					<div>
-						<img src="/images/banner8.jpg" alt="amazon banner" />
-					</div>
-
-					<div>
-						<img src="/images/banner4.jpg" alt="amazon banner" />
-					</div>
-
-					<div>
-						<img src="/images/banner.jpg" alt="amazon banner" />
-					</div>
-
-					<div>
-						<img src="/images/banner2.jpg" alt="amazon banner" />
-					</div>
-
-					<div>
-						<img src="/images/banner10.jpg" alt="amazon banner" />
-					</div>
+					{banners.map((banner, index) => (
+						<div key={index}>
+							<img
+								src={banner.src}
+								alt={banner.alt}
+								className="w-full max-w-full max-h-full z-[-3] object-contain"
+								style={{
+									maskImage:
+										'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))',
+								}}
+								onError={(e) => {
+									e.currentTarget.src = '/images/fallback-banner.jpg' // Fallback image
+								}}
+							/>
+						</div>
+					))}
 				</Carousel>
-			</BannerContainer>
-		</Wrapper>
+			</div>
+		</div>
 	)
 }
 
 export default Banner
-
-const Wrapper = styled.div`
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-`
-
-const BannerContainer = styled.div`
-	z-index: -3 !important;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-right: auto;
-	margin-left: auto;
-	max-width: 1500px;
-	margin-top: -10px;
-	margin-bottom: -25% !important;
-
-	img {
-		width: 100%;
-		max-width: 100%;
-		max-height: 100%;
-		z-index: -3 !important;
-		object-fit: contain;
-		mask-image: linear-gradient(
-			to bottom,
-			rgba(0, 0, 0, 1),
-			rgba(0, 0, 0, 1),
-			rgba(0, 0, 0, 0),
-			rgba(0, 0, 0, 0)
-		);
-	}
-`

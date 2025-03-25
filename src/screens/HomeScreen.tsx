@@ -1,14 +1,19 @@
-import React from 'react'
+import HomePageContent from '@/components/Home/Home'
+import ShimmerLayout from '@/components/Shimmer-ui/ShimmerLoader'
+import { auth } from '@/config'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
-import Home from '../components/Home'
-import LayoutHigherOrderComponent from '../layouts/index'
+export default function HomeScreen() {
+	const [user, loading, error] = useAuthState(auth)
 
-function HomeScreen() {
-	return (
-		<LayoutHigherOrderComponent>
-			<Home />
-		</LayoutHigherOrderComponent>
-	)
+	console.log(user, loading, error)
+
+	if (loading) {
+		return (
+			// Initialising User...
+			<ShimmerLayout />
+		)
+	}
+
+	return <HomePageContent />
 }
-
-export default HomeScreen

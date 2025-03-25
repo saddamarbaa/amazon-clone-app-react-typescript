@@ -1,14 +1,10 @@
-import React from 'react'
+import Order from '@/components/Order/Order'
+import Layout from '@/components/wrapper'
 
-import Order from '../components/Order'
-import LayoutHigherOrderComponent from '../layouts/index'
-
-function OrderScreen() {
+export default function OrderScreen() {
 	return (
-		<LayoutHigherOrderComponent>
+		<Layout>
 			<Order />
-		</LayoutHigherOrderComponent>
+		</Layout>
 	)
 }
-
-export default OrderScreen

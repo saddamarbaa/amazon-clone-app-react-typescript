@@ -13,20 +13,15 @@ import {
 
 import { getFirestore } from 'firebase/firestore'
 const googleProvider = new GoogleAuthProvider()
+console.log()
 
 const firebaseConfig = {
-	 apiKey: "AIzaSyDYMtLgrfLKwYXGbBiSKloyzN5c8QiDZBo",
-
-  authDomain: "ecommerce-a6301.firebaseapp.com",
-
-  projectId: "ecommerce-a6301",
-
-  storageBucket: "ecommerce-a6301.appspot.com",
-
-  messagingSenderId: "86853033296",
-
-  appId: "1:86853033296:web:b857d9f1f2354a71cda055"
-
+	apiKey: 'AIzaSyCH63FlG36cjpXkQm5n4XqaYEZ9M3mWrAM',
+	authDomain: 'amazoon-clone-app.firebaseapp.com',
+	projectId: 'amazoon-clone-app',
+	storageBucket: 'amazoon-clone-app.firebasestorage.app',
+	messagingSenderId: '643848763574',
+	appId: '1:643848763574:web:ea3565987e931385f6ce17',
 }
 
 // Initialize Firebase
@@ -36,15 +31,16 @@ const auth = getAuth()
 const db = getFirestore()
 
 export {
+	app,
 	auth,
+	createUserWithEmailAndPassword,
 	db,
+	getAuth,
 	GoogleAuthProvider,
 	googleProvider,
-	getAuth,
-	signInWithPopup,
-	signInWithEmailAndPassword,
-	createUserWithEmailAndPassword,
 	sendPasswordResetEmail,
+	signInWithEmailAndPassword,
+	signInWithPopup,
 	signOut,
 	updateProfile,
 }
