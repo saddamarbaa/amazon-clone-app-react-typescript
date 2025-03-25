@@ -1,230 +1,122 @@
-import React, { memo, useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { v4 as uuidv4 } from 'uuid'
-import { useDispatch } from 'react-redux'
-import NumberFormat from 'react-number-format'
-import { setRemoveFromBasketState } from '../features/basket/basketSlice'
+import {
+	// selectBasket,
+	// setAddToBasketState,
+	setDecreaseQuantity,
+	setIncreaseQuantity,
+	setRemoveFromBasketState,
+} from '@/global-states/features/basket/basket'
+import { truncate } from '@/lib/utils'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import 'react-lazy-load-image-component/src/effects/blur.css'
-//  @ts-ignore
-import Fade from 'react-reveal/Fade'
-import { truncate } from '../utils'
-import { ProductType } from '../types'
+import { useDispatch } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
+import { CustomButton } from './ui/button'
+import { ProductType } from '@/types'
 
 const CartItem = ({
 	id,
 	title,
 	image,
 	price,
-	category,
 	description,
 	stock,
-}: ProductType) => {
-	const [starRating, setStarRating] = useState(3)
-
+	quantity,
+}: ProductType & { quantity: number }) => {
 	const dispatch = useDispatch()
 
-	// call fetchMoviesData()
-	useEffect(() => {
-		setStarRating(Math.floor(Math.random() * 6))
-	}, [id])
+	// Remove item from basket handler
+	const handleRemoveItem = (id: number | string) => {
+		dispatch(setRemoveFromBasketState({ id }))
+	}
 
-	const removeToBasketHandler = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-		id: number | string,
-	) => {
-		event.preventDefault()
-		dispatch(
-			setRemoveFromBasketState({
-				id: id,
-			}),
-		)
+	// Increase item quantity handler
+	const handleIncreaseQuantity = (id: number | string) => {
+		dispatch(setIncreaseQuantity({ id }))
+	}
+
+	// Decrease item quantity handler
+	const handleDecreaseQuantity = (id: number | string) => {
+		dispatch(setDecreaseQuantity({ id }))
+	}
+
+	// Generate star rating UI
+	const renderStarRating = (rating: number) => {
+		return Array(rating)
+			.fill(null)
+			.map(() => <span key={uuidv4()}>★</span>)
 	}
 
 	return (
-		<Fade bottom cascade>
-			<Wrapper className="checkoutProduct">
-				<div className="product__image">
-					<LazyLoadImage
-						effect="blur"
-						placeholderSrc="https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg"
-						src={image}
-						alt="demo image"
-					/>
-				</div>
+		<div className="flex flex-col lg:flex-row items-start border-b border-gray-200 py-6 px-3 bg-white hover:bg-gray-50 transition duration-300 ease-in-out shadow-sm rounded-lg">
+			{/* Product Image */}
+			<div className="flex-shrink-0 pb-3 pr-4 w-full lg:w-48">
+				<LazyLoadImage
+					effect="blur"
+					placeholderSrc="https://image.tmdb.org/t/p/original/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg"
+					src={image}
+					alt={`${title} product image`}
+					className="h-48 w-48 object-contain"
+					role="img"
+					aria-label={title}
+				/>
+			</div>
 
-				<div className="checkoutProduct__info">
-					<div className="checkoutProduct__title">
-						<h2>{title}</h2>
-					</div>
+			{/* Product Info */}
+			<div className="flex-grow lg:flex lg:justify-between lg:items-start w-full">
+				<div className="space-y-2 lg:w-2/3">
+					{/* Title */}
+					<h2 className="m-0 text-lg font-semibold text-[#007185] hover:text-[#c45500] cursor-pointer">
+						{title}
+					</h2>
 
-					<div className="checkoutProduct__description">
-						{truncate(description, 260)}
-					</div>
+					{/* Description */}
+					<p className="text-sm text-gray-600">{truncate(description, 260)}</p>
 
-					<div className="checkoutProduct__info-stock">
+					{/* Stock Info */}
+					<p className="mt-1 text-[#007600] font-semibold">
 						{stock ? stock : 'In Stock'}
+					</p>
+
+					{/* Star Rating */}
+					<div className="my-2 text-[#f6991e] font-bold flex">
+						{renderStarRating(5)} {/* Static rating for now */}
 					</div>
-					<div className="checkoutProduct__rating">
-						{Array(starRating ? starRating : 4)
-							//  @ts-ignore
-							.fill()
-							.map((star) => {
-								return <span key={uuidv4()}>✶</span>
-							})}
+
+					{/* Quantity Adjusters */}
+					<div className="flex items-center space-x-2 mt-2 w-fit">
+						<CustomButton
+							className="px-3 py-1 border border-gray-400 rounded-md text-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#c45500]"
+							onClick={() => handleDecreaseQuantity(id)}
+							aria-label="Decrease quantity">
+							–
+						</CustomButton>
+						<span className="text-sm font-bold px-3">{quantity}</span>
+						<CustomButton
+							className=" border border-gray-400 rounded-md text-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#c45500]"
+							onClick={() => handleIncreaseQuantity(id)}
+							aria-label="Increase quantity">
+							+
+						</CustomButton>
 					</div>
-					<button
-						className="checkoutProduct__showButton"
-						onClick={(event) => removeToBasketHandler(event, id)}>
-						Remove From Basket
-					</button>
-				</div>
-				<div className="checkoutProduct__price">
-					<NumberFormat
-						value={price}
-						displayType={'text'}
-						thousandSeparator={true}
-						prefix={'$'}
-						decimalScale={2}
-					/>
 				</div>
 
-				<button
-					className="checkoutProduct__hideButton"
-					onClick={(event) => removeToBasketHandler(event, id)}>
-					Remove From Basket
-				</button>
-			</Wrapper>
-		</Fade>
+				{/* Product Price and Remove Button */}
+				<div className="lg:text-right lg:ml-4 lg:mt-0 mt-6 w-full lg:w-auto">
+					{/* Total Price */}
+					<p className="text-lg font-bold mb-3">
+						${(price * quantity).toFixed(2)} {/* Total price for the item */}
+					</p>
+
+					{/* Remove Button */}
+					<CustomButton
+						onClick={() => handleRemoveItem(id)}
+						className="px-4 py-2 border border-red-500 text-red-600 rounded-md hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200"
+						aria-label={`Remove ${title} from basket`}>
+						Remove
+					</CustomButton>
+				</div>
+			</div>
+		</div>
 	)
 }
 
-export default memo(CartItem)
-
-const Wrapper = styled.div`
-	display: flex;
-	border-bottom: 1px solid #ddd;
-	padding-top: 12px;
-	padding-bottom: 12px;
-	flex-direction: column;
-
-	@media (min-width: 992px) {
-		flex-direction: row;
-	}
-
-	.product__image {
-		flex-grow: 0;
-		flex-shrink: 0;
-		padding-bottom: 12px;
-		margin-right: 1rem;
-
-		img {
-			width: 100%;
-			height: 100%;
-			width: 190px;
-			height: 190px;
-			object-fit: contain;
-		}
-	}
-
-	.checkoutProduct__info {
-		flex-grow: 1;
-	}
-
-	.checkoutProduct__title h2 {
-		margin: 0;
-		font-size: 18px;
-		color: #007185;
-		margin: 13px 0;
-
-		:hover {
-			color: #c45500 !important;
-		}
-	}
-
-	.checkoutProduct__description {
-		font-size: 0.9rem;
-		:hover {
-			color: #c45500 !important;
-		}
-	}
-
-	.checkoutProduct__info-stock {
-		margin-top: 4px;
-		color: #007600;
-	}
-
-	.checkoutProduct__price {
-		font-size: 18px;
-		font-weight: 700;
-		margin-left: 16px;
-		padding-top: 10px;
-		padding-top: 10px;
-
-		@media (max-width: 991px) {
-			margin-left: 0px;
-		}
-	}
-
-	.checkoutProduct__rating {
-		margin: 13px 0;
-		color: #f6991e;
-		font-size: 1em;
-		font-weight: bold;
-	}
-
-	button.checkoutProduct__showButton {
-		@media (max-width: 992px) {
-			display: none;
-		}
-	}
-
-	button {
-		font-size: 1rem;
-		display: block;
-		cursor: pointer;
-		padding: 7px 15px;
-		border: 1px solid;
-		background: #f0c14b;
-		border-color: #a88734 #9c7e31 #846a29;
-		color: #111;
-		border-radius: 5px;
-		cursor: pointer;
-		text-align: center;
-		transition: 0.4s;
-
-		:hover {
-			background: #f4d078;
-			background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
-			background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
-		}
-
-		button:focus {
-			outline: none;
-		}
-
-		.checkoutProduct__price {
-			font-size: 18px;
-			font-weight: 700;
-			margin-left: 16px;
-			padding-top: 10px;
-			padding-top: 10px;
-		}
-
-		@media (max-width: 568px) {
-			display: flex;
-			width: 70%;
-			order: 3;
-		}
-	}
-
-	button.checkoutProduct__hideButton {
-		display: none;
-
-		@media (max-width: 991px) {
-			display: block;
-			width: fit-content;
-			margin: 13px 0;
-		}
-	}
-`
+export default CartItem
