@@ -16,10 +16,6 @@ export default function RouteLayout() {
 			{/* Redirect from "/" to "/browser" */}
 			<Route path="/browser" element={<Navigate to="/" />} />
 			<Route path="/" element={<HomeScreen />} />
-			{/*<Route path="/movie/:id" element={<MovieDetailScreen />} />
-			<Route path="/profile" element={<PrivateRoute />}>
-				<Route path="/profile" element={<ProfileScreen />} />
-			</Route> */}
 
 			<Route path="/order" element={<PrivateRoute />}>
 				<Route path="/order" element={<OrderScreen />} />
