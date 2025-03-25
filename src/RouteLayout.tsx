@@ -6,7 +6,7 @@ import SignInScreen from './screens/SignInScreen'
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen'
 import PrivateRoute from './components/PrivateRoute'
 import OrderScreen from './screens/OrderScreen'
-import CheckoutScreen from './screens/CheckoutScreen'
+// import CheckoutScreen from './screens/CheckoutScreen'
 
 export default function RouteLayout() {
 	const location = useLocation()
@@ -20,9 +20,9 @@ export default function RouteLayout() {
 			<Route path="/order" element={<PrivateRoute />}>
 				<Route path="/order" element={<OrderScreen />} />
 			</Route>
-			<Route path="/checkout" element={<PrivateRoute />}>
+			{/* <Route path="/checkout" element={<PrivateRoute />}>
 				<Route path="/checkout" element={<CheckoutScreen />} />
-			</Route>
+			</Route> */}
 			<Route path="/sign-up" element={<SignUpScreen />} />
 			<Route path="/sign-in" element={<SignInScreen />} />
 			<Route path="/forgot-password" element={<ForgotPasswordScreen />} />
